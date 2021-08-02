@@ -1,11 +1,9 @@
+/* Covid 19 Data Exploration */
+
 Select *
 From PortfolioProject..CovidDeaths
 where continent is not null
 order by 3,4
-
---Select *
---From PortfolioProject..CovidVaccinations
---order by 3,4
 
 -- Select Data that we are going to be using
 
@@ -17,6 +15,7 @@ order by 1,2
 
 -- Looking at Total Cases vs Total Deaths
 -- Shows likelihood of dying if you contract Covid in your country
+
 Select Location,date, total_cases,total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
 Where location like '%germany%'
@@ -24,8 +23,8 @@ where continent is not null
 order by 1,2
 
 
--- Looking at the Total Cases vs Population
--- Shows what percentage of population got Covid
+-- Total Cases vs Population
+-- Shows what percentage of population is infected with Covid
 
 Select Location,date, Population, total_cases, (total_cases/population)*100 as PercentPopulationInfected
 From PortfolioProject..CovidDeaths
@@ -55,15 +54,6 @@ order by TotalDeathCount desc
 
 
 -- Breaking down by Continent
-
---Select location, MAX(cast(total_deaths as int)) as TotalDeathCount
---From PortfolioProject..CovidDeaths
----- Where location like '%germany%'
---where continent is null
---Group by location
---order by TotalDeathCount desc
-
-
 
 -- Showing Continents with the Highest Death Count per Population
 
